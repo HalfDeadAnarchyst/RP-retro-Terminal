@@ -1,0 +1,32 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		SERVICE
+		
+ SYNOPSIS
+		SERVICE [OPTION]
+		
+ DESCRIPTION
+		SERVICE - Allows to operate with active and connected services 
+		
+		ON/ENABLE
+			Enables service if it is possible
+		
+		OFF/DISABLE
+			Enables service if it is possible
+		
+		STATUS
+			Shows current status of the service
+		
+		LIST
+			Show list of services 
+		
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		SERVICE ON Djinn
+			Enables Djinn service
+			
+		SERVICE LIST
+			Shows list of the services on the ship
+- - - - - - - - - - - - - - - - - - - - - - -

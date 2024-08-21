@@ -1,0 +1,9 @@
+
+- - - - - - - - - - - - - - - - - - - - - - -
+  HELP		Show the documented commands
+  PING		Tries to ping an item inside to get its location
+  ITEM		Shows tracked items on the ship and their status, some items can be PINGed
+  FILE		Get list or read logs of catched data
+  DIAG		Launches ship preliminary diagnostics
+  CLEAR		Clears the screen
+- - - - - - - - - - - - - - - - - - - - - - -

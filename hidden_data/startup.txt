@@ -1,0 +1,1 @@
+Type 'HELP' to get help using the Terminal

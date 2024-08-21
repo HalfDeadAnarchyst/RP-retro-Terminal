@@ -1,0 +1,12 @@
+NAME,IS_ON,STATUS,PASSWORD
+Gravity,ON,OK,ALFAHD
+Light,ON,OK,NONE
+Oxygen,ON,OK,NONE
+Climate Control,ON,OK,NONE
+Air Filter,OFF,OK,NONE
+Missle Lock On,OFF,ERROR,NONE
+Flying Assist,ON,OK,NONE
+Alarm Light,OFF,OK,NONE
+AutoDiag,ON,OK,NONE
+Djinn,OFF,ERROR,HACKME12
+Furnace,ON,OK,NONE

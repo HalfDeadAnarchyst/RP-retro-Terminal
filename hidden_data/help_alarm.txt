@@ -1,0 +1,20 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		ALARM
+		
+ SYNOPSIS
+		ALARM [OPTION]
+		
+ DESCRIPTION
+		ALARM - Launches an emergency command
+
+		LOCKDOWN
+			Unlocks all doors without password, closes them and locks
+		
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		ALARM LOCKDOWN
+			Unlocks all doors without password, closes them and locks
+- - - - - - - - - - - - - - - - - - - - - - -

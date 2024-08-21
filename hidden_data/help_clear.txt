@@ -1,0 +1,17 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		CLEAR
+		
+ SYNOPSIS
+		CLEAR
+		
+ DESCRIPTION
+		CLEAR - removes any INFO from the DISPLAY
+
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		CLEAR
+			Clears the Terminal
+- - - - - - - - - - - - - - - - - - - - - - -

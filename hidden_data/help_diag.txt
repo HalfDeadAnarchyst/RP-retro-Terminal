@@ -1,0 +1,33 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		DIAG - tool for express diagnose of the ship. 
+		If the connection is established, more detailed about systems will be provided. 
+		Without any connections no details can be provided
+		
+ SYNOPSIS
+		DIAG [OPTION]
+		
+ DESCRIPTION
+		Concatenate DIAG(s) to standard output.
+
+		With no OPTION is ALL, error message will appear.
+
+		ALL
+			Shows every module diagnostic information
+
+		LIST
+			Shows list of current responding modules on the ship
+
+		MODULE_NAME
+			Shows list of diagnostic information about this specific module
+
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		DIAG ALL
+			Output whole ship diagnostic information
+
+		DIAG REACTOR
+			Output only reactor diagnostic information
+- - - - - - - - - - - - - - - - - - - - - - -

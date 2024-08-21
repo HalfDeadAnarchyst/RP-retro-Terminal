@@ -1,0 +1,45 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		DOOR
+		
+ SYNOPSIS
+		DOOR [COMMAND] [DOORNAME]
+		
+ DESCRIPTION
+		DOOR - complex command of controlling all doors in the current structure
+		Some DOORs require password to operate on
+
+		OPEN [DOORNAME]
+			Shows list of all availible files in all the databanks
+
+		CLOSE [DOORNAME]
+			Displays all summarized transponder entries in the selected ZONE
+
+		LOCK [DOORNAME]
+			Displays all summarized transponder entries in the selected ZONE
+
+		UNLOCK [DOORNAME]
+			Displays all summarized transponder entries in the selected ZONE
+
+		STATUS [DOORNAME]
+			Displays all summarized transponder entries in the selected ZONE
+			
+		LIST
+			Displays all summarized transponder entries in the selected ZONE
+		
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		DOOR OPEN M11
+			Opens M11 door if it is unlocked
+
+		DOOR UNLOCK M11
+			Unlocks M11 door if it was locked
+			
+		DOOR STATUS M11
+			Displays status of the M11 door
+		
+		DOOR LIST
+			Displays status of all registered doors
+- - - - - - - - - - - - - - - - - - - - - - -

@@ -1,0 +1,212 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+- SYSTEM RESET INITIATED -
+- FATAL ERROR(S) DETECTED -
+- REFER TO DJINN OPERATIONS MANUAL -
+- - - - - - - - - - - - - - - - - - - - - - -
+ REACTOR			| ERROR -30: NO SPECIFIC
+- - - - - - - - - - - - - - - - - - - - - - -
+ REACTOR POWER			| ERR PWR < 1000
+ REACTOR COOLANT (CLT)		| ERR NON CLT
+ REACTOR CONTROL		| OK
+ REACTOR CLEAR SYS		| OK
+ REACTOR POWER SHELL		| OK
+ REACTOR TRANSFORMER		| OK
+ REACTOR FUEL INJECTOR		| OK
+ COOLANT TANK			| ERR 0/224 L
+ ACCUM	 POWER			| OK 900
+ ACCUM	 INTEGRITY		| OK 8/8
+ ACCUM   TRANSFORMER		| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ BRIDGE				| ERROR -1 : NO COMMS
+- - - - - - - - - - - - - - - - - - - - - - -
+ TACMAP				| OK
+ COM1 SEAT			| OK
+ COM2 SEAT			| ERR NO CON
+ NAV1 SEAT			| ERR NO CON
+ PIL SEAT			| OK
+ DJN SEAT			| OK
+ ARM DOOR			| OK
+ TRM COMMS			| ERR COMMS -1
+- - - - - - - - - - - - - - - - - - - - - - -
+ ENGINE L			| ERROR -3 : MINOR DAMAGE
+- - - - - - - - - - - - - - - - - - - - - - -
+ ROTOR				| ERR NON CENTERED
+ TURBINE (H2 ANT)		| ERR FOREIGN OBJECT
+ HEAT EXCHANGER			| ERR FOREIGN OBJECT
+ THRUST CHAMBER 		| OK
+ H2 TANK			| ERR NO FUEL
+ H2 INJECTOR			| OK
+ ION CYCLOTRON			| OK
+ SUPERCOND E-MAG		| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ ENGINE R			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ ROTOR				| OK
+ TURBINE (H2 ANT)		| OK
+ HEAT EXCHANGER			| OK
+ THRUST CHAMBER 		| OK
+ H2 TANK			| OK
+ H2 INJECTOR			| OK
+ ION CYCLOTRON			| OK
+ SUPERCOND E-MAG		| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ LIFE SUPPORT			| ERROR -14: HIGH METHANE
+- - - - - - - - - - - - - - - - - - - - - - -
+ AIR PUMP			| OFFLINE ERR -14
+ AIR FILTER			| ERR NO FILTER
+ TEMP CONTROL			| OK 
+ AIR ANALYZER			| ERR -14
+ O2				| ERR < 19%
+ N2				| OK  ~ 75%
+ CH4				| ERR > 4%
+ CO2				| OK  < 1%
+ OTH				| OK  < 1%
+- - - - - - - - - - - - - - - - - - - - - - -
+ COMMS				| ERROR -1 : NO SIGNAL
+- - - - - - - - - - - - - - - - - - - - - - -
+ GRAV WAVES SENSOR		| OK
+ IMAGO				| OK
+ TULSA				| OK
+ BLACK BOX			| OK
+ TRANSPONDER			| OK
+ SHORT-RANGE INT		| ERR: NO COMMS
+ LONG-RANGE INT			| ERR: NO COMMS
+ ENCRYPTOR			| ERR: OFFLINE
+ AIS-IFF			| ERR: OFFLINE
+- - - - - - - - - - - - - - - - - - - - - - -
+ HANGAR				| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ TRACTOR BEAM			| OK
+ HANGAR DOOR			| OK
+ HANGAR LOCK			| OK
+ FUEL PIPE			| OK 
+ POWER LINE			| OK 100%
+ DEPRESSURIZER			| OK
+ SHUTTLE CONNECTOR		| OK
+ SHUTTLE LOCK			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ CRYO PODS			| ERROR -20: NO PWR
+- - - - - - - - - - - - - - - - - - - - - - -
+ EMERGENCY PWR			| ERR 0%
+ CONTROL HUB			| ON
+ CAPSULES			| ERR 22/23 ONLINE
+ DECRYO BEDS			| OK 3/3
+ CRYO TANK			| OK 22/23
+- - - - - - - - - - - - - - - - - - - - - - -
+ CARGO HAUL			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ PING SYSTEM			| OK
+ LOAD				| OK 50/50
+ MAGNET LOCKS			| OK 50/50
+ CLIMATE CONTROL		| OK OFFLINE
+- - - - - - - - - - - - - - - - - - - - - - -
+ CABINS				| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ SLEEP BOX			| OK
+ SLEEP ROOM			| OK
+ SHOWERS			| OK
+ TOILETS			| OK
+ VENDING MACHINES		| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ CHURCH				| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ CARE SYS			| OK
+ BLESSING FURNACE		| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ MEDBAY				| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ LABORATORY			| OK
+ EMERGENCY ZONE			| OK 1/1
+ SURGEON ZONE			| OK 2/2
+ RECOVERY ROOM			| OK 5/5
+ DIAGNOSTIC ZONE		| OK 1/1
+ CULTIVATION PODS		| OK 4/4
+ TOILETS			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ LIFE PODS			| ERROR -21: NO PODS
+- - - - - - - - - - - - - - - - - - - - - - -
+ PODS				| ERR 0/4 NO PODS 
+ LAUNCH SYS			| OK
+ FUEL TANK			| ERR 0/80
+ POWER LINE			| OK
+ TRANSPONDER LOCK		| OK
+ LIFE POD CARGO			| ERR NO MODULE
+- - - - - - - - - - - - - - - - - - - - - - -
+ TOP GUN			| ERROR -10: NO TURRET FRAME
+- - - - - - - - - - - - - - - - - - - - - - -
+ TURRET SERVOMOTOR		| ERR OBSTRUCTED
+ TURRET FRAME			| ERR NO FRAME
+ ION CYCLOTRON			| ERR NO FRAME
+ GAS ACCELERATOR		| ERR NO FRAME
+ AIMLOCK SYS			| ERR NO FRAME
+ COOLING SYS			| ERR NO FRAME
+- - - - - - - - - - - - - - - - - - - - - - -
+ MID GUN			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ TURRET FRAME			| OK
+ AMMO LOADER			| OK
+ CAPACITORS			| OK
+ CAPACITORS CHARGE		| OK 100%
+ ACCELERATOR			| OK 100%
+ AIM ASSIST			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ LOW GUN			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ TURRET SERVOMOTOR		| OK
+ TURRET FRAME			| OK
+ AMMO LOADER			| OK
+ AIM ASSIST			| OK
+ COOLING SYS			| 100%
+- - - - - - - - - - - - - - - - - - - - - - -
+ DETAIN				| ERROR -20: NO PWR
+- - - - - - - - - - - - - - - - - - - - - - -
+ CELL				| OK 10/10
+ CONTROL DESK			| OK
+ CORRIDOR SHOCK SYS		| ERR NO PWR
+ CELL LIGHTBOX			| ERR NO PWR
+ TORTURE ROOM			| OK
+ INTERROGATION BLOCK		| OK
+ BLOCK BARS			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ OBSERVATORY			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ FANCY LIGHT SYS		| OK
+ BAR AUTO CHEF			| OK
+ TOILETS			| OK
+ KALJAN AUTO SYS		| OK
+ HOLOSCREEN SYS			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ MESS HALL			| ERROR -30: NO SPECIFIC
+- - - - - - - - - - - - - - - - - - - - - - -
+ KITCHEN			| OK
+ FRIDGE				| OK
+ VIRT TABLES			| OK 22/22
+ AUTO CLAW			| ERR NO CLAW
+ VENDING MACHINES		| OK
+ AROMA ADDON			| OK
+ DISHWASHER			| ERR NO PWR
+ BAR DESK			| OK
+- - - - - - - - - - - - - - - - - - - - - - -
+ SERVER ROOM			| ERROR -4 : MAJOR DAMAGES
+- - - - - - - - - - - - - - - - - - - - - - -
+ DATA BANK (DB)			| ERR 3/9 ONLINE
+ DB COOLING			| OK
+ DB PWR				| OK
+ PROCESSING CLUSTER (PC)	| ERR 3/12 ONLINE
+ PC COOLING			| OK
+ PC PWR				| OK
+ EMER COOLING			| ERR DEPLETED
+ TERMINAL			| OK
+ MAHALAY			| OFFLINE
+ ACCUM PWR			| OK 900/900
+- - - - - - - - - - - - - - - - - - - - - - -
+ ARMORY				| OK         BLUE LOCKDOWN
+- - - - - - - - - - - - - - - - - - - - - - -
+ DROID ROOM			| OK
+ DROID CONNECTOR		| OK
+ WEAPON ROOM			| OK
+ SHIP AMMO ROOM			| OK
+ EMER LOCKS			| OK BLUE
+ CONTROL ROOM			| OK
+ CONTROL TERMINAL		| OK
+ - - - - - - - - - - - - - - - - - - - - - - -

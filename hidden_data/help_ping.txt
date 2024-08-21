@@ -1,0 +1,33 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		PING
+		
+ SYNOPSIS
+		PING [OPTION]
+		
+ DESCRIPTION
+		PING - tool for triangulation of an active transponder in the active zone
+		
+		In case of successful search displays all recieved information
+			NAME - current name of the transponder
+			TYPE - assigned type of the item
+			CATEGORY - assigned usage of the item
+			ZONE - location of the transponder
+			BIOLOCK - is biolock assigned
+			OWNER - who is registered as owner
+			STATUS - integrity status
+			ENTRIES - amount of similar transponders
+			NOTE - additional notes
+
+		With no OPTION ERROR message occures.
+
+		ITEM_NAME
+			Tries the triangulation of ITEM_NAME
+
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		ITEM CARGO_001
+			Looks for CARGO_001 in the active zone
+- - - - - - - - - - - - - - - - - - - - - - -

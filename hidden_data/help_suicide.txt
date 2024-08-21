@@ -1,0 +1,34 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		SUICIDE
+		
+ SYNOPSIS
+		SUICIDE [OPTION]
+		
+ DESCRIPTION
+		SUICIDE - Allows to initiate self-destruct sequence with presetted timer
+		
+		TIMER [PARAM]
+			Allows you to change timer of the self-destruct sequence in SECOND(s)
+		
+		START/INITIATE
+			Starts the self-destruct sequence
+			Might require password
+		
+		STOP/ABORT
+			Stops the self-destruct sequence
+			Might require password
+		
+		STATUS
+			Shows configuration of the self-destruct machine
+		
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		SUICIDE TIMER 1
+			Sets self-destruct timer to 1 second
+			
+		SUICIDE STOP
+			Stops self-destruct and sets default settings
+- - - - - - - - - - - - - - - - - - - - - - -

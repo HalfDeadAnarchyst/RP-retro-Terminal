@@ -1,0 +1,37 @@
+- - - - - - - - - - - - - - - - - - - - - - -
+ NAME
+		FILE
+		
+ SYNOPSIS
+		FILE [OPTION]
+		
+ DESCRIPTION
+		FILE - tool to read or play any saved file in the DATABANK
+		If file is readable or playable - it will appear in the FILE list
+		Content of the file might not be full due to bugs in CATCH service
+		WARNING: some files require password
+		
+		Concatenate DIAG(s) to standard output.
+
+		With no OPTION ERROR message occures.
+
+		LIST
+			Shows list of all availible files in all the databanks
+
+		FILE_NAME
+			Tries to read the FILE_NAME to standart output
+			You can use incomplete file name
+
+		VERSION
+			Output version information
+			
+ EXAMPLES
+		FILE LIST
+			Output all availible files
+
+		FILE TEXT_LOG
+			Output content of the named file
+			
+		FILE AUDI
+			Output content of the AUDIO_log_example.audio
+- - - - - - - - - - - - - - - - - - - - - - -
