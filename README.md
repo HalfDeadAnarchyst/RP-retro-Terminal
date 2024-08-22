@@ -24,25 +24,25 @@ Installation comes in 3 steps:
 
 1. Install [windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701). This part is important, as stock terminal doesn't support shaders and can't make cool retro effect
 2. Launch terminal at least once and close it
-3. Go to this github (https://github.com/Swordfish90/cool-retro-term) and download the package (Green button download -> ZIP)
-4. Unarchive the cool-retro-term-master at `C:/` (If you want to store shaders anywhere else, you will need to change 55 line at settings.json later)
-    > Final folder should look like `C:/cool-retro-term/`, if you have -master or -1.2.0 at the end - remove it
+3. Go to this github (https://github.com/Hammster/windows-terminal-shaders) and download the package (Green button download -> ZIP)
+4. Unarchive the `windows-terminal-shaders-main` at `C:/` (If you want to store shaders anywhere else, you will need to change 55 line at settings.json later)
+    > Final folder should look like `C:/windows-terminal-shaders-main/`, if you have -master or -1.2.0 at the end - remove it
 5. Download RP-retro-Terminal archive and unzip it in any folder you want (you will launch your terminal from this folder as well)
-6. Go to `cool-retro-term_settings_json` in RP-retro-Terminal and copy file `settings.json`
+6. Go to `windows-terminal_settings_json` in RP-retro-Terminal and copy file `settings.json`
 7. Paste it in this directory `%LocalAppData%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState`
-    If you don't want to paste the settings like this, you can follow the tutorial from cool-retro-term repository from point 3
+    If you don't want to paste the settings like this, you can follow the tutorial from windows-terminal-shaders repository from point 3
 8. Launch the Terminal from `⊞Win` and type Terminal, or any other way
 
 If you see cool retro yellow screen - you've done it
 
 > [!TIP]
-> For those users who want to use other colors of CRT screen - open `crt.hlsl` file of `cool-retro-term` package with **Notepad++** and change this line `#define TINT_COLOR              TINT_AMBER` with one of the options below it
+> For those users who want to use other colors of CRT screen - open `crt.hlsl` file of `windows-terminal-shaders-main` package with **Notepad++** and change this line `#define TINT_COLOR              TINT_AMBER` with one of the options below it
 
 > [!TIP]
 > For those users who want to use other shaders - go to `settings.json` from point 7 and change name at `line 55`
 
 > [!WARNING]
-> If you don't see the result you wanted to see - follow through [`cool-retro-term`](https://github.com/Swordfish90/cool-retro-term) instruction
+> If you don't see the result you wanted to see - follow through [`windows-terminal-shaders-main`](https://github.com/Hammster/windows-terminal-shaders) instruction
 
 ## python
 
@@ -268,7 +268,7 @@ Ways you can contact me:
 
 # Credits
 
-[Cool-retro-term](https://github.com/Swordfish90/cool-retro-term) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric than
+[windows-terminal-shaders](https://github.com/Hammster/windows-terminal-shaders) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric than
 
 [@Danieczka](https://github.com/Dane-VI) for massive help with audios of the Terminal
 
