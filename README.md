@@ -26,6 +26,7 @@ Installation comes in 3 steps:
 2. Launch terminal at least once and close it
 3. Go to this github (https://github.com/Swordfish90/cool-retro-term) and download the package (Green button download -> ZIP)
 4. Unarchive the cool-retro-term-master at `C:/` (If you want to store shaders anywhere else, you will need to change 55 line at settings.json later)
+    > Final folder should look like `C:/cool-retro-term/`, if you have -master or -1.2.0 at the end - remove it
 5. Download RP-retro-Terminal archive and unzip it in any folder you want (you will launch your terminal from this folder as well)
 6. Go to `cool-retro-term_settings_json` in RP-retro-Terminal and copy file `settings.json`
 7. Paste it in this directory `%LocalAppData%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState`
