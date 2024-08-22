@@ -1,5 +1,0 @@
-Replace settings.json from this folder at:
-%LocalAppData%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
-
-Or follow cool-retro-term instructions
-https://github.com/Swordfish90/cool-retro-term
