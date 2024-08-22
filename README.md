@@ -72,7 +72,22 @@ You're good!
 
 ## Telegram bot setup
 
-This section is optional, if you want 
+This section is optional, if you want telegram bot to spam you with messages of player's important activity in the Terminal (like starting self destruct timer, opening passworded file, PINGing an item) - you should create telegram bot (this is easy) and set up `telegram_integration.py` file. Just follow these steps:
+
+1. Write to this bot https://t.me/BotFather
+2. Write/push /start
+3. Write/push /newbot
+4. Write a name for him (usually it's best to write your nickname + _DMbot, like HalfDeady_DM so you can easily understand who is writing to you)
+5. Write a name for the bot (name from p.4 + bot, like HalfDeady_DMbot)
+6. Copy HTTP API token
+7. Open `telegram_integration.py` file and paste this HTTP API TOKEN inside of quotes of `tele_api_key = ''` at the line 3, so it will be like this `tele_api_key = '{YOUR_API_TOKEN}'`
+8. Write to this bot https://t.me/username_to_id_bot
+9. Write/push /start
+10. Copy your ID (it's line of numbers)
+11. Open `telegram_integration.py` file and paste your ID inside of quotes of `tele_user_id = ''` at the line 4, so it will be like this `tele_user_id = '123456789'`
+12. Open your newly created bot (there's a link to it at BotFather message)
+13. Write/push /start . Note that it will not respond to you, as it doesn't work yet, it's totally okay and needed to pass by telegram spam protection
+14. Launch your RP-retro-Terminal and try one of the important commands (selfdestruct, service, door, file passworded), and bot will send you the message
 
 ## Discord bot setup
 
@@ -248,6 +263,10 @@ Just clears the screen from the mess above, so player can't scroll up until play
 ## DIAG breakline
 
 If you add spacebar to the end of the breakline, so it will differ from the one in python config - diag command will break. If you want to change breakline in the shipdiag file, you need also change breakline in the config for an exact match
+
+## Spacebar after param
+
+If you write space
 
 # Plans
 
