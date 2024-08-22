@@ -52,7 +52,7 @@
         {
             "adjustIndistinguishableColors": "never",
             "cursorShape": "filledBox",
-            "experimental.pixelShaderPath": "d:\\windows-terminal-shaders-main\\crt.hlsl",
+            "experimental.pixelShaderPath": "c:\\windows-terminal-shaders-main\\crt.hlsl",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
