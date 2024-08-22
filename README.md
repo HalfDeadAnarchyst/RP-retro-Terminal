@@ -2,41 +2,52 @@
 
 This is a roleplaying Terminal for open roleplaying games or for tabletop games in futuristic settings. Easy modability was one of the main concerns during the development, so any user with minimal programming skills can change this terminal for his game and setting
 
-As this Terminal provides various [functionality](README.md/Content), it also provides integration with the messenger of the Game Master or Dungeon Master, so all important events in the terminal will be displayed at his screen no matter GM/DM position
+As this Terminal provides various [functionality](#Content), it also provides integration with the messenger of the Game Master or Dungeon Master, so all important events in the terminal will be displayed at his screen no matter GM/DM position
 
 This Terminal still Work In Progress, so any feedback, bugreport, push request or suggestion is highly appreciated
+
+# Examples
 
 # Installation
 
 Installation comes in 3 steps:
-1. Install cool-retro-term
-2. Install python
-3. Install python modules
+1. Install **cool-retro-term**
+2. Install **python**
+3. Install **python modules**
+
+> [!NOTE]
+> Installation tutorial goes for people with low programming knowledge.
+> 
+> If you feel you can handle it yourself - install cool-retro-term and python modules as more fittable for you
 
 ## cool-retro-term
 
 1. Install [windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701). This part is important, as stock terminal doesn't support shaders and can't make cool retro effect
 2. Launch terminal at least once and close it
-3. Go to this github (https://github.com/Swordfish90/cool-retro-term) and download the package (Green button download -> ZIP)
-4. Unarchive the cool-retro-term-master at `C:/` (If you want to store shaders anywhere else, you will need to change 55 line at settings.json later)
+3. Go to this github (https://github.com/Hammster/windows-terminal-shaders) and download the package (Green button download -> ZIP)
+4. Unarchive the `windows-terminal-shaders-main` at `C:/` (If you want to store shaders anywhere else, you will need to change 55 line at settings.json later)
+    > Final folder should look like `C:/windows-terminal-shaders-main/`, if you have -master or -1.2.0 at the end - remove it
 5. Download RP-retro-Terminal archive and unzip it in any folder you want (you will launch your terminal from this folder as well)
-6. Go to `cool-retro-term_settings_json` in RP-retro-Terminal and copy file `settings.json`
+6. Go to `windows-terminal_settings_json` in RP-retro-Terminal and copy file `settings.json`
 7. Paste it in this directory `%LocalAppData%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState`
-    If you don't want to paste the settings like this, you can follow the tutorial from cool-retro-term repository from point 3
+    If you don't want to paste the settings like this, you can follow the tutorial from windows-terminal-shaders repository from point 3
 8. Launch the Terminal from `⊞Win` and type Terminal, or any other way
 
-This is it! If you see cool retro yellow screen - you've done it
+If you see cool retro yellow screen - you've done it
 
-For those users who want to use other colors of CRT screen - open `crt.hlsl` file of `cool-retro-term` package with **Notepad++** and change this line `#define TINT_COLOR              TINT_AMBER` with one of the options below it
+> [!TIP]
+> For those users who want to use other colors of CRT screen - open `crt.hlsl` file of `windows-terminal-shaders-main` package with **Notepad++** and change this line `#define TINT_COLOR              TINT_AMBER` with one of the options below it
 
-For those users who want to use other shaders - go to `settings.json` from point 7 and change name at `line 55`
+> [!TIP]
+> For those users who want to use other shaders - go to `settings.json` from point 7 and change name at `line 55`
 
-If you don't see the result you wanted to see - follow through `cool-retro-term` instruction
+> [!WARNING]
+> If you don't see the result you wanted to see - follow through [`windows-terminal-shaders-main`](https://github.com/Hammster/windows-terminal-shaders) instruction
 
 ## python
 
 1. If you are not sure if there is python at your PC/Laptop/Anything, it's better to open Terminal and write `uninstall python`. Don't worry, we will install it later
-2. You can just write python in the same Terminal and windows will open Microsoft Store with latest python, or you can just download it [from here](https://apps.microsoft.com/detail/9ncvdn91xzqp?hl=en-us&gl=US)
+2. You can just write `python` in the same Terminal and windows will open Microsoft Store with latest python, or you can just download it [from here](https://apps.microsoft.com/detail/9ncvdn91xzqp?hl=en-us&gl=US)
 
 After you done - you have python on your PC/Laptop!
 
@@ -59,38 +70,229 @@ Alternatively, if you installing packages from somewhere else, you can write the
 
 You're good!
 
+## Telegram bot setup
+
+This section is optional, if you want 
+
+## Discord bot setup
+
+Not implemented yet
+
 # Launching
 
-Finally, let's test if it works
-
-To launch the RP-Terminal your Terminal should be in the same folder
+To launch the RP-Terminal your Terminal should be in the same folder. If it's not, use cd `C:/{your_Terminal_folder}` command
 
 Than just `python main.py`
 
 And RP-Terminal should work
 
-If at this point everything works good, you can proceed to play with the RP-Terminal, modify it, try it out
+If at this point everything works good, you can proceed to play with the RP-Terminal, modify it, try it out, anything
 
 If something went wrong with the python installation - let me know, so i can add additional points to the instruction
 
 # Content
 
+This sections will tell how commands works and how to use them as intended. Currently RP-retro-Terminal supports next console commands:
+
+* **HELP**
+* **DIAG**
+* **FILE**
+* **PING**
+* **ITEM**
+* **CLEAR**
+* **DOOR**
+* **ALARM**
+* **SERVICE**
+* **SELFDESTRUCT**
+
+Every command might be issued without additional parameters, but not all commands will work that way. If command need at least any parameters, command will say that
+
+More detailed help can be found in the help files in hidden_data, all hidden options will be described in sections below the command
+
+Also every command have VERSION attribute that shows fictional version of the utility. It will not be described in the sections below
+
+Exmaples of work of the commands can be found in the youtube video above
+
+## HELP
+
+This is a simple command that reads content of `hidden_data/help.txt` if no parameters transfered, or reads content of `hidden_data/help_{param}.txt` if there is any parameters
+
+Each help file comes in separate file. It's content created as UNIX help reference
+
+If file is not found, command will say that
+
+## DIAG
+
+DIAG command works with `hidden_data/shipdiag.txt` file and have 3 main parameters:
+
+* DIAG ALL
+* DIAG LIST
+* DIAG {MODULE}
+
+> [!CAUTION]
+> This command relies on `breakline` which can be setted up in config. IF you remove the file's header `breakline`s or change it on other `breakline`s - diag command **will** break up, proceed with caution
+>
+> For more information see [modding](#Modding) section
+
+### DIAG ALL
+
+This command just outputs everything there is `hidden_data/shipdiag.txt` file
+
+### DIAG LIST
+
+Diag list skips 2 `breakline`s and spit out the lines in between of `breakline`s every 2 `breakline`, essentially showing just the names of the sections on ship/station and overall info about the section
+
+### DIAG {PARAM}
+
+This command goes through the file and looks for the first word to match the `{PARAM}`, after what shows contents until hits second `breakline`
+
+## FILE
+
+FILE command work with `hidden_data/files_passwords.txt` and whole `open_data` folder. FILE command has 2 parameters, that can be parsed in:
+
+* FILE LIST
+* FILE {FILENAME}
+
+There are also two hidden functions that helps this one work effectively
+
+* FILE TYPE
+* FILE PASSWORD
+
+### FILE TYPE
+
+This function transfers file type into lore-accurate format:
+
+* .txt = TEXTLOG
+* .ascii = IMAGE
+* .wav = AUIDOLOG
+* everything else = UNKWN FORMAT
+
+.ascii is basically .txt that was manually renamed to .ascii, and still opens as .txt file 
+
+### FILE PASSWORD
+
+There are two functions, one check if there is password for file, other one checks the file password and if there is one - asks the player for file password
+
+Currently there is an option that makes file check "slow" by making decription progress bar before checking password match, you can turn it on or off in the config part. This was needed it my case, so players won't brute-force all the known passwords
+
+To change/add/remove file passwords you need to open hidden_data/files_passwords.txt and edit passwords in next format:
+
+`{filename} {password}`
+
+> [!IMPORTANT]
+> If you add spacebar at the end of the password - it will be part of the password
+
+### FILE LIST 
+
+Writes list of files from `open_data` folder, also writes file type and is it password protected
+
+> [!IMPORTANT]
+> Files in subfolders will be ignored
+
+### FILE {FILENAME}
+
+This command reads/plays the `{filename}` file from `open_data` folder if it's one of the supported types (.txt, .ascii, .wav)
+
+If it's .wav this command will also put a progress bar up to length of the wav file
+
+If file requires password (as in `hidden_data/files_passwords.txt`) - password will be asked, and file will be shown on correct password
+
+> [!NOTE]
+> There is no need to write full file name in this command. If there are no duplicates, writing `FILE SK_spa` will resuilt in showing file `SK_spare_part.ascii`
+
+> [!NOTE]
+> This command is register-sensetive
+
+## PING
+
+This command is a part of ITEM command and shows detailed information, if `{PARAM}` transfered is matching with an entry in `items.csv` file
+
+Basically this programm serves as detailed infromation storage about all mysterious items that players might find and which have some serial_number on them
+
+## ITEM
+
+## CLEAR
+
+Just clears the screen from the mess above, so player can't scroll up until player issues enough commands
+
+## DOOR
+
+## ALARM
+
+## SERVICE
+
+## SELFDESTRUCT
+
 # Modding
+
+## configs
+
+## Removing/Renaming commands
+
+## Changing hidden files
+
+### startup
+
+### shipdiag
+
+### files passwords
+
+### csv files
+
+## audio
+
+## Translation
+
+# Known bugs
+
+## DIAG breakline
+
+If you add spacebar to the end of the breakline, so it will differ from the one in python config - diag command will break. If you want to change breakline in the shipdiag file, you need also change breakline in the config for an exact match
+
+# Plans
+
+## Localisation csv
+
+## Discord integration
 
 # Suggestions, Feedbacks and Patches
 
 # Contacts
 
+Ways you can contact me:
+
+* (Telegram)[t.me/HalfDeady]
+* Discord - HalfDeady (just add me)
+* (email)[halfdeadanarchyst@gmail.com]
+* And github
+
 # Credits
 
-[Cool-retro-term](https://github.com/Swordfish90/cool-retro-term) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric than
+[windows-terminal-shaders](https://github.com/Hammster/windows-terminal-shaders) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric than
 
-@Danieczka for massive help with audios of the Terminal
+[@Danieczka](https://github.com/Dane-VI) for massive help with audios of the Terminal
 
-@jess_jass for making atmospheric audio logs, character dialogues and other narrative for FILE section of the Terminal
+[@jess_jass](t.me/@jess_jass) for making atmospheric audio logs, character dialogues and other narrative for FILE section of the Terminal
 
 [miri-solari](https://github.com/Miri-Solari) for help with DIAG part and other minor tasks
 
 Special thanks for my crew of space sailors for testing this Terminal out
 
 # License
+
+This work is licensed under the Creative Commons Attribution 4.0 International License. ![license-image](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png)
+
+To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+## You are free to:
+
+* **Share** — copy and redistribute the material in any medium or format for any purpose, even commercially.
+* **Adapt** — remix, transform, and build upon the material for any purpose, even commercially.
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+## Under the following terms:
+
+* **Attribution** — You must give appropriate credit , provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
