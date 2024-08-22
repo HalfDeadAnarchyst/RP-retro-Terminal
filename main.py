@@ -40,6 +40,9 @@ selfdestruct_password_stop = "hackme14"
 selfdestruct_active = False
 selfdestruct_dead = False
 
+# sleep time before startup starts working
+start_sleep_time = 5
+
 # break line for terminal AND (!) diag file
 breakline = "- - - - - - - - - - - - - - - - - - - - - - -\n"
 
@@ -757,7 +760,7 @@ def main():
 # Clear previous terminal
 os.system("cls")
 # Time to give my player the laptop
-time.sleep(0)
+time.sleep(start_sleep_time)
 # Print welcome message
 read_the_file("hidden_data/startup.txt")
 
