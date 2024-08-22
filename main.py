@@ -30,7 +30,8 @@ slow_type_speed = 1000
 # file password settings
 decryption_is_slow = True
 decryption_speed = 1000
-decryption_speed_wav = 1000000000
+decryption_wav_divider = 10000
+decryption_speed_wav = 1000
 decryption_lag = 10
 
 # Self Destruct settings
@@ -137,7 +138,7 @@ def check_file_password(filepath):
             speed = decryption_speed
             if get_file_type(filepath.split('.', 1)[1]) == "AUDIOLOG":
                 speed = decryption_speed_wav
-                size = size//100
+                size = size//decryption_wav_divider
             for _ in tqdm(range(0, size),
                           desc = f"DECYPHING...",
                           bar_format = '{l_bar}{bar:20}{r_bar}{bar:-20b}'):  # shortens progress bar
@@ -185,7 +186,7 @@ def file(command):
                     is_pass = "LOCK"
                 else:
                     is_pass = "OPEN"
-                output(f" {file_.split('.', 1)[0]:32} | {file_type:8} | {is_pass}\n")
+                output(f" {file_.split('.', 1)[0]:32} | {file_type:12} | {is_pass}\n")
             output(breakline)
         else:
             # param is name of file
