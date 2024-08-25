@@ -8,7 +8,9 @@ This Terminal still Work In Progress, so any feedback, bugreport, push request o
 
 # Examples
 
-Table of contents:
+TODO: Past youtube link and screenshots here
+
+# Table of contents:
 
 * **[Installation](#installation)**<br>
     * **[cool-retro-term](#cool-retro-term)**<br>
@@ -58,9 +60,9 @@ Table of contents:
 # Installation
 
 Installation comes in 3 steps:
-1. Install **cool-retro-term**
-2. Install **python**
-3. Install **python modules**
+1. Install `cool-retro-term`
+2. Install `python`
+3. Install `python modules`
 
 > [!NOTE]
 > Installation tutorial goes for people with low programming knowledge.
@@ -156,16 +158,16 @@ If something went wrong with the python installation - let me know, so i can add
 
 This sections will tell how commands works and how to use them as intended. Currently RP-retro-Terminal supports next console commands:
 
-* **HELP**
-* **DIAG**
-* **FILE**
-* **PING**
-* **ITEM**
-* **CLEAR**
-* **DOOR**
-* **ALARM**
-* **SERVICE**
-* **SELFDESTRUCT**
+* **[HELP](#help)**<br>
+* **[DIAG](#diag)**<br>
+* **[FILE](#file)**<br>
+* **[PING](#ping)**<br>
+* **[ITEM](#item)**<br>
+* **[CLEAR](#clear)**<br>
+* **[DOOR](#door)**<br>
+* **[ALARM](#alarm)**<br>
+* **[SERVICE](#service)**<br>
+* **[SELFDESTRUCT](#selfdestruct)**<br>
 
 Every command might be issued without additional parameters, but not all commands will work that way. If command need at least any parameters, command will say that
 
@@ -187,9 +189,9 @@ If file is not found, command will say that
 
 DIAG command works with `hidden_data/shipdiag.txt` file and have 3 main parameters:
 
-* DIAG ALL
-* DIAG LIST
-* DIAG {MODULE}
+* **DIAG ALL**
+* **DIAG LIST**
+* **DIAG {MODULE}**
 
 > [!CAUTION]
 > This command relies on `breakline` which can be setted up in config. IF you remove the file's header `breakline`s or change it on other `breakline`s - diag command **will** break up, proceed with caution
@@ -224,13 +226,13 @@ repeat points 4-7 until done
 
 FILE command work with `hidden_data/files_passwords.txt` and whole `open_data` folder. FILE command has 2 parameters, that can be parsed in:
 
-* FILE LIST
-* FILE {FILENAME}
+* **FILE LIST**
+* **FILE {FILENAME}**
 
 There are also two hidden functions that helps this one work effectively
 
-* FILE TYPE
-* FILE PASSWORD
+* **FILE TYPE**
+* **FILE PASSWORD**
 
 ### FILE TYPE
 
@@ -320,19 +322,20 @@ Works well with PING command puzzles
 
 You can access ITEM csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=0#gid=0)
 
-When you save this file into the hidden_files folder, you ALWAYS should name it `items.csv`
+> [!WARNING]
+> When you save this file into the hidden_files folder, you ALWAYS should name it `items.csv`
 
 ITEM csv file consists of next headers:
 
-1. Name - this field doesn't shows in ITEM command and only used for PING command, when player encountered an item themselves
-2. Type - doesn't affect anything, just shows in PING as part of the item
-3. Category - While ITEM command is issued, this one is used to summarize items by Category. For an example, if you have 2 items of category FOOD with Entries 2 and 3, ITEM will show sum of 5
-4. Zone - used in ITEM command to show items in the current zone
-5. Biolock - info for players, does this item requires authentification (finger, DNA, pass, anything)
-6. Owner - used in ITEM command to show items of ther current owner
-7. Status - info for the players in PING
-8. Entries - amount of similiar items in the zone, used for p.3 to summarize the info
-9. Note - additional info for the players in PING
+1. **Name** - this field doesn't shows in ITEM command and only used for PING command, when player encountered an item themselves
+2. **Type** - doesn't affect anything, just shows in PING as part of the item
+3. **Category** - While ITEM command is issued, this one is used to summarize items by Category. For an example, if you have 2 items of category FOOD with Entries 2 and 3, ITEM will show sum of 5
+4. **Zone** - used in ITEM command to show items in the current zone
+5. **Biolock** - info for players, does this item requires authentification (finger, DNA, pass, anything)
+6. **Owner** - used in ITEM command to show items of ther current owner
+7. **Status** - info for the players in PING
+8. **Entries** - amount of similiar items in the zone, used for p.3 to summarize the info
+9. **Note** - additional info for the players in PING
 
 While ITEM doesn't show full information, PING show everything about the one particular item
 
@@ -344,12 +347,12 @@ Just clears the screen from the mess above, so player can't scroll up until play
 
 This command works well with telegram_integration, where GM/DM can see with which doors player interacts. One of the most complex commands in the Terminal. Options:
 
-1. List - shows list of visible doors
-2. Status - shows all detailed info about current door
-3. Open - open unlocked door if not broken
-4. Close - close unlocked door if not broken
-5. Lock - locks door if not broken
-6. Unlock - unlocks door if not broken
+1. **List** - shows list of visible doors
+2. **Status** - shows all detailed info about current door
+3. **Open** - open unlocked door if not broken
+4. **Close** - close unlocked door if not broken
+5. **Lock** - locks door if not broken
+6. **Unlock** - unlocks door if not broken
 
 Also some doors require password to operate with
 
@@ -357,16 +360,17 @@ Also some doors require password to operate with
 
 You can access DOOR csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=385102986#gid=385102986)
 
-When you save this file into the hidden_files folder, you ALWAYS should name it `doors.csv`
+> [!WARNING]
+> When you save this file into the hidden_files folder, you ALWAYS should name it `doors.csv`
 
 Headers of the file:
 
-1. DOOR - name of the door. You can use grid system or simple naming system
-2. IS_OPENED - status of the door, is it opened or closed
-3. IS_UNLOCKED - status of the door, is it locked or unlocked
-4. IS_VISIBLE - does this door appear in `DOOR LIST` command. Invisible doors are still operatable 
-5. PASSWORD - does this door requires password to operate with, all not `NONE` counts as password
-6. IS_BROKEN - if not `NOMINAL` than door can't be opened, closed, locked or unlocked
+1. **DOOR** - name of the door. You can use grid system or simple naming system
+2. **IS_OPENED** - status of the door, is it opened or closed
+3. **IS_UNLOCKED** - status of the door, is it locked or unlocked
+4. **IS_VISIBLE** - does this door appear in `DOOR LIST` command. Invisible doors are still operatable 
+5. **PASSWORD** - does this door requires password to operate with, all not `NONE` counts as password
+6. **IS_BROKEN** - if not `NOMINAL` than door can't be opened, closed, locked or unlocked
 
 > [!NOTE]
 > Example of usage `item zone CARGO` or `item owner captain_name`
@@ -409,23 +413,24 @@ This is mostly GM/DM tool, players can switch on/off some systems like light, gr
 
 Availible commands:
 
-1. SERVICE ON/ENABLE
-2. SERVICE OFF/DISABLE
-3. SERVICE STATUS
-4. SERVICE LIST
+1. **SERVICE ON/ENABLE**
+2. **SERVICE OFF/DISABLE**
+3. **SERVICE STATUS**
+4. **SERVICE LIST**
 
 ### SERVICE csv
 
 You can access SERVICE csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=1301457828#gid=1301457828)
 
-When you save this file into the hidden_files folder, you ALWAYS should name it `service.csv`
+> [!WARNING]
+> When you save this file into the hidden_files folder, you ALWAYS should name it `service.csv`
 
 Headers of the file:
 
-1. NAME - Name of the service
-2. IS_ON - Status of the service, is it enabled or disabled
-3. STATUS - Is it functional/broken
-4. PASSWORD - If not NONE, password will be required to turn service on/off
+1. **NAME** - Name of the service
+2. **IS_ON** - Status of the service, is it enabled or disabled
+3. **STATUS** - Is it functional/broken
+4. **PASSWORD** - If not NONE, password will be required to turn service on/off
 
 ### SERVICE ON/ENABLE {SERVICE_NAME}
 
@@ -449,10 +454,10 @@ Complex command that activates or deactives selfdestruct command. In current ver
 
 Availible commands:
 
-1. SELFDESTRUCT TIMER
-2. SELFDESTRUCT START/INITIATE
-3. SELFDESTRUCT STOP/ABORT
-4. SELFDESTRUCT STATUS
+1. **SELFDESTRUCT TIMER**
+2. **SELFDESTRUCT START/INITIATE**
+3. **SELFDESTRUCT STOP/ABORT**
+4. **SELFDESTRUCT STATUS**
 
 And secret command SELFDESTRUCT PLEASEDIE if you just want immideate death screen. Not documented, can't recommend to show this command to the player
 
@@ -548,7 +553,7 @@ Ways you can contact me:
 
 # Credits
 
-[windows-terminal-shaders](https://github.com/Hammster/windows-terminal-shaders) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric than
+[windows-terminal-shaders](https://github.com/Hammster/windows-terminal-shaders) for his exceptional visual base for this terminal. Without these cool graphics RP-retro-Terminal would be less atmospheric
 
 [@Danieczka](https://github.com/Dane-VI) for massive help with audios of the Terminal
 
