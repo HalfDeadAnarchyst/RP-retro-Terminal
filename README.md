@@ -8,7 +8,14 @@ This Terminal still Work In Progress, so any feedback, bugreport, push request o
 
 # Examples
 
-TODO: Past youtube link and screenshots here
+Youtube:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0kQfkeO0Xe4/0.jpg)](https://www.youtube.com/watch?v=0kQfkeO0Xe4)
+
+Telegram notification bot:
+
+![image](https://github.com/user-attachments/assets/a9d25eae-51d9-4cac-ae89-a6100cbec7e1)
+
 
 # Table of contents:
 
