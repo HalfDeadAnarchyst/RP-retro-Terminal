@@ -21,7 +21,7 @@
 		ITEM ZONE CARGO
 			Output all responded transponders in the CARGO bay
 
-		ITEN OWNER SHIPNAME
+		ITEM OWNER SHIPNAME
 			Output all registered transponders of the OWNER
 			
  NOTE
