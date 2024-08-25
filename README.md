@@ -20,7 +20,7 @@ Telegram notification bot:
 # Table of contents:
 
 * **[Installation](#installation)**<br>
-    * **[cool-retro-term](#cool-retro-term)**<br>
+    * **[Windows terminal shaders](#windows-terminal-shaders)**<br>
     * **[python](#python)**<br>
     * **[python modules](#python-modules)**<br>
     * **[Telegram bot setup](#telegram-bot-setup)**<br>
@@ -92,7 +92,7 @@ Installation comes in 3 steps:
 > 
 > If you feel you can handle it yourself - install cool-retro-term and python modules as more fittable for you
 
-## cool-retro-term
+## Windows terminal shaders
 
 1. Install [windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701). This part is important, as stock terminal doesn't support shaders and can't make cool retro effect
 2. Launch terminal at least once and close it
