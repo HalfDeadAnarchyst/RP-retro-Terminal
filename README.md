@@ -56,6 +56,22 @@ TODO: Past youtube link and screenshots here
         * **[SELFDESTRUCT STOP/ABORT](#selfdestruct-stopabort)**<br>
         * **[SELFDESTRUCT STATUS](#selfdestruct-status)**<br>
         * **[SELFDESTRUCT EXPLODE](#selfdestruct-explode)**<br>
+* **[Modding](#modding)**<br>
+    * **[Removing/Renaming commands](#removingrenaming-commands)**<br>
+    * **[Changing hidden files](#changing-hidden-files)**<br>
+        * **[startup](#startup)**<br>
+        * **[shipdiag](#shipdiag)**<br>
+        * **[files passwords](#files-passwords)**<br>
+        * **[csv files](#csv-files)**<br>
+    * **[audio](#audio)**<br>
+    * **[Translation](#translation)**<br>
+* **[Known bugs](#known-bugs)**<br>
+    * **[DIAG breakline](#diag-breakline)**<br>
+* **[Plans](#plans)**<br>
+    * **[Discord integration](#discord-integration)**<br>
+* **[Contacts](#contacts)**<br>
+* **[Credits](#credits)**<br>
+* **[License](#license)**<br>
 
 # Installation
 
@@ -506,23 +522,170 @@ After timer reaches 0:
 
 # Modding
 
+After some time playing around there comes the question - how to mod this Terminal for your usage?
+
+Simple first step is to change the content of open_data folder, but that's not everything that might want to be moddable
+
 ## configs
+
+As it is not in the separate file, i tried to make it more comfortable for potential user to change most important variables in one place
+
+Configs are stored in main.py from line 15 `# SETTINGS SECTION` up to line 44
+
+```py
+# SETTINGS SECTION
+# Things to set up audio for terminal
+pygame.mixer.init(buffer = 2048)
+pygame.mixer.set_num_channels(20)
+pygame.mixer.music.set_volume(0.1)
+pygame.mixer.music.load("audio/mother.wav")
+sound1 = pygame.mixer.Sound("audio/typewriter-key-even.wav")
+sound1.set_volume(0.1)
+enable_music = True
+enable_typewriter = True
+
+# Parameters for slow typer
+slow_line_sleep = 0.15
+slow_type_speed = 1000
+
+# file password settings
+decryption_is_slow = True
+decryption_speed = 1000
+decryption_wav_divider = 10000
+decryption_speed_wav = 1000
+decryption_lag = 10
+
+# Self Destruct settings
+selfdestruct_timer = 600
+selfdestruct_password_start = "hackme12"
+selfdestruct_password_stop = "hackme14"
+selfdestruct_active = False
+selfdestruct_dead = False
+
+# sleep time before startup starts working
+start_sleep_time = 5
+
+# break line for terminal AND (!) diag file
+breakline = "- - - - - - - - - - - - - - - - - - - - - - -\n"
+```
+
+What are the interesting lines here?
+
+1. `pygame.mixer.music.set_volume(0.1)` - number in () is volume of the background sound
+2. `sound1.set_volume(0.1)` - number in () is volume of the typewriter sound
+3. `enable_music = True` - Write "False" if you want to turn background sound off
+4. `enable_typewriter = True` - Write "False" if you want to turn typewriter sound off
+5. `slow_line_sleep = 0.15` - pause between the lines in (s) when outputting text
+6. `slow_type_speed = 1000` - speed of outputting symbols. Higher the number - higher the speed of the output
+7. `decryption_is_slow = True` - Write "False" if you want to remove waiting on decryption when FILE READ requires a password
+8. `decryption_speed = 1000` - Speed of the decryption when FILE READ requires a password
+9. `decryption_wav_divider = 10000` - As WAV files are greatly bigger by the size, this number artifically decreases it's size for the "decryption". Bigger the number - smaller the decryption number
+10. `decryption_speed_wav = 1000` - Separate speed of the decryption for .wav files when FILE READ requires a password
+11. `decryption_lag = 10` - Randomness during the decryption, needs for "jumping" waiting number. The bigger the number - bigger the randomness, but it might be slightly faster in the overall decryption
+12. `selfdestruct_timer = 600` - starting timer for the selfdestruct sequence, default is 600 seconds
+13. `selfdestruct_password_start = "hackme12"` - what password need sto be used to start selfdestruct sequence. Use "" if you don't need password to start
+14. `selfdestruct_password_stop = "hackme14"` - what password need sto be used to stop selfdestruct sequence. Use "" if you don't need password to stop
+15. `selfdestruct_active = False` - If you want self destruct timer to be active right from the start, change this on "True"
+16. `start_sleep_time = 5` - timer between launching of the Terminal and writing the hidden_files/startup.txt and waiting for the input. This time was needed to actually give the laptop to the player, so he won't miss any content
+17. `breakline = "- - - - - - - - - - - - - - - - - - - - - - -\n"` - line that used to separate the blocks in commands and DIAG file
 
 ## Removing/Renaming commands
 
+There is a block of lines around line 723 
+
+Left side in the list is the name that players input, right one is a function that players call
+
+If you want to rename function - rename left part in the ""
+
+If you want to remove function - delete the line entirely
+
+If you want to add new name for the function - copy-paste the line and rename left part
+
+```py
+# List of all available commands in the terminal. They're not showing in help
+# Delete some commands if you don't want your players to use them
+# Rename some commands at the left part of list if you want to
+all_command_list = {
+    "help": help,
+    "diag": diag,
+    "file": file,
+    "clear": clear,
+    "item": item,
+    "ping": ping,
+    "door": door,
+    "alarm": alarm,
+    "service": service,
+    "selfdestruct": selfdestruct,
+    "suicide": selfdestruct
+}
+```
+
+> [!CAUTION]
+> There are two things you need to remember editing this block:
+>
+> 1. Comma (,) should be at the end of each line except for the last one, or python Terminal won't launch any commands
+> 2. Name of the left side (inside of "") should be unique. If it duplicates - Terminal won't launch any commands
+
 ## Changing hidden files
+
+Except for absoultely random text in open_data folder, files in hidden_data folder are triggered by other functions or events. Some of them should be designed specifically in certain way
 
 ### startup
 
+This is just .txt file that player sees on startup of the Terminal. If you need longer pauses between the lines, spam spacebar
+
 ### shipdiag
+
+This file should be written in certain way, as described in [this section](#diag-file-format)
 
 ### files passwords
 
+files_passwords.txt is the file that used by FILE command, when Terminal checks if the certain filename uses a password to open. Example of the file:
+
+```
+AJ_new_sleepzone.txt 12345678
+DA_artifact.txt knowledge
+GK_1_encounter.txt IseaU789
+```
+
+On the left side is the exact name of the file and on the right side is the passwords that player needs to use to unlock the file
+
+> [!CAUTION]
+> If you write spacebar after the password - it will be part of the password. Example `"password     "`
+
 ### csv files
+
+To change .csv files i recommend use [this google sheet](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=1301457828#gid=1301457828), than download and export as csv pages you need with the content you need
+
+Make sure, that files you download will be renamed into:
+
+1. doors.csv
+2. items.csv
+3. service.csv
+
+Or this files will not be read by the Terminal
 
 ## audio
 
+Except for .wav files in the open_data folder, there are two files that used for the Terminal:
+
+1. audio/mother.wav
+2. audio/typewriter-key-even
+
+First file is the background file with all the noise you can hear, second one is key sound for typing
+
+There is no support for multiple sounds in the category yet
+
 ## Translation
+
+There is no simple localization tool yet, so to translate content into your language you need to do next steps:
+
+1. Change content of .txt or .csv files of hidden_data and open_data
+2. Open main.py and change content of `output(f" translation here")` and `send_notification(f" translation here")`
+
+There are about 140 lines of p.2 in the main.py, so translation might take some time
+
+In the future there will be .csv file with every line loading into the Terminal, but not for now
 
 # Known bugs
 
@@ -536,11 +699,27 @@ If you write space
 
 # Plans
 
+This is not the final version, and potentially i will update Terminal as soon as there will be interest in this. But there are some nearest future plans:
+
 ## Localisation csv
+
+To minimize user interference with the code (it's scary), first thing on the next massive update is localization sheet. 
+
+It will consist from line ID, variable name, context of the text, text itself 
 
 ## Discord integration
 
+This is the part i need help with, but as soon as someone will send (or i will find) - discord integration will also be implemented in the Terminal. Will work in the same way, as the Telegram integration
+
 # Suggestions, Feedbacks and Patches
+
+If you have any patches or bugfixes - please send them in the Issues on the github
+
+The same goes with any expantion for the Terminal (adding Tetris, minigames, puzzles, e.t.c.)
+
+The same goes with any localization or reformatting of the files (text files format, new startup, any flavoring)
+
+If you want to suggest anything, feedback anything - feel free to contact me on any platform from the Contacts section or github
 
 # Contacts
 
