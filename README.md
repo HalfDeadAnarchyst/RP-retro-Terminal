@@ -8,6 +8,53 @@ This Terminal still Work In Progress, so any feedback, bugreport, push request o
 
 # Examples
 
+Table of contents:
+
+* **[Installation](#installation)**<br>
+    * **[cool-retro-term](#cool-retro-term)**<br>
+    * **[python](#python)**<br>
+    * **[python modules](#python-modules)**<br>
+    * **[Telegram bot setup](#telegram-bot-setup)**<br>
+    * **[Discord bot setup](#discord-bot-setup)**<br>
+* **[Launching](#launching)**<br>
+* **[Content](#content)**<br>
+    * **[HELP](#help)**<br>
+    * **[DIAG](#diag)**<br>
+        * **[DIAG ALL](#diag-all)**<br>
+        * **[DIAG LIST](#diag-list)**<br>
+        * **[DIAG PARAM](#diag-param)**<br>
+        * **[DIAG file format](#diag-file-format)**<br>
+    * **[FILE](#file)**<br>
+        * **[FILE TYPE](#file-type)**<br>
+        * **[FILE PASSWORD](#file-password)**<br>
+        * **[FILE LIST](#file-list)**<br>
+        * **[FILE {FILENAME}](#file-filename)**<br>
+        * **[FILE folder](#file-folder)**<br>
+    * **[PING](#ping)**<br>
+    * **[ITEM](#item)**<br>
+        * **[ITEM csv](#item-csv)**<br>
+    * **[CLEAR](#clear)**<br>
+    * **[DOOR](#door)**<br>
+        * **[DOOR LIST](#door-list)**<br>
+        * **[DOOR STATUS](#door-status)**<br>
+        * **[DOOR OPEN {DOORNAME}](#door-open-doorname)**<br>
+        * **[DOOR CLOSE {DOORNAME}](#door-close-doorname)**<br>
+        * **[DOOR LOCK {DOORNAME}](#door-lock-doorname)**<br>
+        * **[DOOR UNLOCK {DOORNAME}](#door-unlock-doorname)**<br>
+    * **[ALARM](#alarm)**<br>
+    * **[SERVICE](#service)**<br>
+        * **[SERVICE csv](#service-csv)**<br>
+        * **[SERVICE ON/ENABLE {SERVICE_NAME}](#service-onenable-service_name)**<br>
+        * **[SERVICE OFF/DISABLE {SERVICE_NAME}](#service-offdisable-service_name)**<br>
+        * **[SERVICE STATUS {SERVICE_NAME}](#service-status-service_name)**<br>
+        * **[SERVICE LIST](#service-list)**<br>
+    * **[SELFDESTRUCT](#selfdestruct)**<br>
+        * **[SELFDESTRUCT TIMER](#selfdestruct-timer)**<br>
+        * **[SELFDESTRUCT START/INITIATE](#selfdestruct-startinitiate)**<br>
+        * **[SELFDESTRUCT STOP/ABORT](#selfdestruct-stopabort)**<br>
+        * **[SELFDESTRUCT STATUS](#selfdestruct-status)**<br>
+        * **[SELFDESTRUCT EXPLODE](#selfdestruct-explode)**<br>
+
 # Installation
 
 Installation comes in 3 steps:
@@ -161,6 +208,18 @@ Diag list skips 2 `breakline`s and spit out the lines in between of `breakline`s
 
 This command goes through the file and looks for the first word to match the `{PARAM}`, after what shows contents until hits second `breakline`
 
+### DIAG file format
+
+1. breakline
+2. header information
+3. breakline
+4. module
+5. breakline
+6. module content
+7. breakline
+
+repeat points 4-7 until done 
+
 ## FILE
 
 FILE command work with `hidden_data/files_passwords.txt` and whole `open_data` folder. FILE command has 2 parameters, that can be parsed in:
@@ -197,9 +256,15 @@ To change/add/remove file passwords you need to open hidden_data/files_passwords
 > [!IMPORTANT]
 > If you add spacebar at the end of the password - it will be part of the password
 
-### FILE LIST 
+> [!TIP]
+> Example of usage: just write password when programm asks
+
+### FILE LIST
 
 Writes list of files from `open_data` folder, also writes file type and is it password protected
+
+> [!TIP]
+> Example of usage `file list`
 
 > [!IMPORTANT]
 > Files in subfolders will be ignored
@@ -212,19 +277,64 @@ If it's .wav this command will also put a progress bar up to length of the wav f
 
 If file requires password (as in `hidden_data/files_passwords.txt`) - password will be asked, and file will be shown on correct password
 
+> [!TIP]
+> Example of usage `file captain_log`
+
 > [!NOTE]
 > There is no need to write full file name in this command. If there are no duplicates, writing `FILE SK_spa` will resuilt in showing file `SK_spare_part.ascii`
 
 > [!NOTE]
 > This command is register-sensetive
 
+### FILE folder
+
+Everything you put in `open_data` folder will be shown (except for other folders)
+
+Only .txt, .ascii (which is renamed .txt) and .wav can be read by the Terminal
+
+If you editing some texts, you don't need to restart Terminal to check FILE READ, as Terminal doesn't store files in the memory. That also means that you potentially can just add files from presaved folders to open_data when players find some flash drives or databanks without restarting the Terminal
+
 ## PING
+
+for ping csv file look item csv section
 
 This command is a part of ITEM command and shows detailed information, if `{PARAM}` transfered is matching with an entry in `items.csv` file
 
-Basically this programm serves as detailed infromation storage about all mysterious items that players might find and which have some serial_number on them
+Basically this command serves as detailed infromation storage about all mysterious items that players might find and which have some serial_number on them
+
+> [!TIP]
+> For an example players found mysterious CARGO_666 crate, player can use `ping CARGO_666` and recieve detailed information about this crate, contents and other notes
 
 ## ITEM
+
+ITEM is a command that allows to "scan" particular zone of the ship/station/colony or particular owner
+
+This command serves as vague hint for the players to which zones they should investigate first, and mostly it should show only valuable items (keys, weapons, cargo, buttons) that is tracked by the system
+
+Works well with PING command puzzles
+
+> [!TIP]
+> Example of usage `item zone CARGO` or `item owner captain_name`
+
+### ITEM csv
+
+You can access ITEM csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=0#gid=0)
+
+When you save this file into the hidden_files folder, you ALWAYS should name it `items.csv`
+
+ITEM csv file consists of next headers:
+
+1. Name - this field doesn't shows in ITEM command and only used for PING command, when player encountered an item themselves
+2. Type - doesn't affect anything, just shows in PING as part of the item
+3. Category - While ITEM command is issued, this one is used to summarize items by Category. For an example, if you have 2 items of category FOOD with Entries 2 and 3, ITEM will show sum of 5
+4. Zone - used in ITEM command to show items in the current zone
+5. Biolock - info for players, does this item requires authentification (finger, DNA, pass, anything)
+6. Owner - used in ITEM command to show items of ther current owner
+7. Status - info for the players in PING
+8. Entries - amount of similiar items in the zone, used for p.3 to summarize the info
+9. Note - additional info for the players in PING
+
+While ITEM doesn't show full information, PING show everything about the one particular item
 
 ## CLEAR
 
@@ -232,11 +342,162 @@ Just clears the screen from the mess above, so player can't scroll up until play
 
 ## DOOR
 
+This command works well with telegram_integration, where GM/DM can see with which doors player interacts. One of the most complex commands in the Terminal. Options:
+
+1. List - shows list of visible doors
+2. Status - shows all detailed info about current door
+3. Open - open unlocked door if not broken
+4. Close - close unlocked door if not broken
+5. Lock - locks door if not broken
+6. Unlock - unlocks door if not broken
+
+Also some doors require password to operate with
+
+### DOOR csv
+
+You can access DOOR csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=385102986#gid=385102986)
+
+When you save this file into the hidden_files folder, you ALWAYS should name it `doors.csv`
+
+Headers of the file:
+
+1. DOOR - name of the door. You can use grid system or simple naming system
+2. IS_OPENED - status of the door, is it opened or closed
+3. IS_UNLOCKED - status of the door, is it locked or unlocked
+4. IS_VISIBLE - does this door appear in `DOOR LIST` command. Invisible doors are still operatable 
+5. PASSWORD - does this door requires password to operate with, all not `NONE` counts as password
+6. IS_BROKEN - if not `NOMINAL` than door can't be opened, closed, locked or unlocked
+
+> [!NOTE]
+> Example of usage `item zone CARGO` or `item owner captain_name`
+
+### DOOR LIST
+
+Shows all the doors if they are visible. Doesn't show IS_BROKEN status (it might've come as surprise)
+
+### DOOR STATUS
+
+Shows full status of the select door, regardless of visibility
+
+### DOOR OPEN {DOORNAME}
+
+Opens door if not locked. Might require a password. Will not open a door if it's broken. If it is already opened - it will do nothing. If door succesfully opens telegram_integration will send a notification to the DM/GM
+
+### DOOR CLOSE {DOORNAME}
+
+Same as above, but about closing
+
+### DOOR LOCK {DOORNAME}
+
+Locks door if it was unlocked. Might require a password. Will not lock if it's broken. If already locked - it will do nothing. If door succesfully locks telegram_integration will send a notification to the DM/GM
+
+### DOOR UNLOCK {DOORNAME}
+
+Same as above, but about unlocking
+
 ## ALARM
+
+Currently there's only one ALARM parameter at the moment: lockdown
+
+ALARM LOCKDOWN locks and closes all the visible and unpassworded doors 
+
+Sends notification to the DM/GM if integration is active
 
 ## SERVICE
 
+This is mostly GM/DM tool, players can switch on/off some systems like light, gravity, AI and other. Works like doors, but more simple
+
+Availible commands:
+
+1. SERVICE ON/ENABLE
+2. SERVICE OFF/DISABLE
+3. SERVICE STATUS
+4. SERVICE LIST
+
+### SERVICE csv
+
+You can access SERVICE csv file by [this link](https://docs.google.com/spreadsheets/d/1J50qlpazz9-BZ9HpLJa7esmqiXov2bYRm--KeePo9i4/edit?gid=1301457828#gid=1301457828)
+
+When you save this file into the hidden_files folder, you ALWAYS should name it `service.csv`
+
+Headers of the file:
+
+1. NAME - Name of the service
+2. IS_ON - Status of the service, is it enabled or disabled
+3. STATUS - Is it functional/broken
+4. PASSWORD - If not NONE, password will be required to turn service on/off
+
+### SERVICE ON/ENABLE {SERVICE_NAME}
+
+If service is turned off, this will turn service on. Might require password. Will send notification to the DM/GM
+
+### SERVICE OFF/DISABLE {SERVICE_NAME}
+
+Same as above, but turn off
+
+### SERVICE STATUS {SERVICE_NAME}
+
+Shows full information about one particular service (doesn't show password)
+
+### SERVICE LIST
+
+Shows full list of availible services
+
 ## SELFDESTRUCT
+
+Complex command that activates or deactives selfdestruct command. In current version can be issued with two different command names and doesn't have csv config (yet)
+
+Availible commands:
+
+1. SELFDESTRUCT TIMER
+2. SELFDESTRUCT START/INITIATE
+3. SELFDESTRUCT STOP/ABORT
+4. SELFDESTRUCT STATUS
+
+And secret command SELFDESTRUCT PLEASEDIE if you just want immideate death screen. Not documented, can't recommend to show this command to the player
+
+### SELFDESTRUCT TIMER
+
+Changes self-destruct timer time. Default is 600, can be set to any amount
+
+If set to negative, timer will trigger immidetaly 
+
+### SELFDESTRUCT START/INITIATE
+
+Might require password
+
+Starts background timer
+
+Every time player can input command there will be notification message about time left before selfdestruct trigger
+
+### SELFDESTRUCT STOP/ABORT
+
+Might require password
+
+Starts background timer
+
+Shows player his left time before selfdestruct trigger
+
+### SELFDESTRUCT STATUS
+
+Shows to the player next information:
+
+1. TIMER seconds amount, how many seconds there will be before an explosion
+2. Is password required to start the sequence
+3. Is password required to stop the sequence
+4. Current SELFDESTRUCT status, is TIMER is active
+
+### SELFDESTRUCT EXPLODE
+
+Not a typeable command, but this section describes what will happen if timer reaches 0
+
+After timer reaches 0:
+
+1. Terminal will say "Bye"
+2. Wait 1 second
+3. Clear the screen
+4. Blocks player's input
+5. Starts to spam █ character into the screen constantly
 
 # Modding
 
