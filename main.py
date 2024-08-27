@@ -49,6 +49,14 @@ breakline = "- - - - - - - - - - - - - - - - - - - - - - -\n"
 
 
 # Functions section
+def param_extractor(command):
+    """Splits the command into parameters."""
+    params = command.split(" ")
+    if params[-1] == "":
+        params.pop()
+    return params
+
+
 # slow typer for all prints, fancy output. Global variables for this at the top
 def output(text):
     for line in text:
@@ -170,9 +178,9 @@ def get_file_type(ending):
 
 
 # function to read/list the file(s), ask for password, or play audio file
-def file(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+def file(params):
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.2.5\n")
             return
@@ -190,7 +198,7 @@ def file(command):
             output(breakline)
         else:
             # param is name of file
-            param = command.split(' ', 1)[1]
+            param = params[1]
             # gets list of files and appends them into the list
             file_ = [filename for filename in os.listdir("open_data") if filename.startswith(param)]
             if len(file_) > 1:
@@ -231,9 +239,9 @@ def file(command):
 
 
 # displays all of some parts of hidden shipdiag file, used for technical roleplay
-def diag(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+def diag(params):
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.17.2\n")
             return
@@ -277,9 +285,9 @@ def diag(command):
 
 
 # shows the player all information about normal/quest item, if player knows exact name of the item
-def ping(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+def ping(params):
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.75.0\n")
             return
@@ -289,7 +297,7 @@ def ping(command):
             for entry in load_csv("items"):
                 if entry[0].upper() == "NAME":
                     naming = entry
-                if entry[0] == command.split(' ', 1)[1].upper():
+                if entry[0] == params[1].upper():
                     item_line.append(entry)
             if len(item_line) > 1:
                 output("Multiple ping detected, triangulation aborted\n")
@@ -308,24 +316,24 @@ def ping(command):
 
 
 # shows summarized of types of items of the ZONE or OWNER (check CSV)
-def item(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 2)[1].lower()
+def item(params):
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.75.0")
             return
         elif param == "zone":
-            if len(command.split(' ', 2)) > 2:
+            if len(params) > 2:
                 result = {}
                 for entry in load_csv("items"):
-                    if entry[3] == command.split(' ', 2)[2].upper():
+                    if entry[3] == params[2].upper():
                         if entry[2] in result:
                             result[entry[2]] = result[entry[2]] + int(entry[7])
                         else:
                             result[entry[2]] = int(entry[7])
                 if result:
                     output(breakline)
-                    output(f" ZONE\t\t  {command.split(' ', 2)[2].upper()}\n")
+                    output(f" ZONE\t\t  {params[2].upper()}\n")
                     output(breakline)
                     for key in result:
                         output(f" {key:15}| AMOUNT: {result[key]:4}\n")
@@ -335,17 +343,17 @@ def item(command):
             else:
                 output("Enter name of the ZONE, use HELP ITEM for detailed info\n")
         elif param == "owner":
-            if len(command.split(' ', 2)) > 2:
+            if len(params) > 2:
                 result = {}
                 for entry in load_csv("items"):
-                    if entry[5] == command.split(' ', 2)[2].upper():
+                    if entry[5] == params[2].upper():
                         if entry[2] in result:
                             result[entry[2]] = result[entry[2]] + int(entry[7])
                         else:
                             result[entry[2]] = int(entry[7])
                 if result:
                     output(breakline)
-                    output(f" OWNER\t\t  {command.split(' ', 2)[2].upper()}\n")
+                    output(f" OWNER\t\t  {params[2].upper()}\n")
                     output(breakline)
                     for key in result:
                         output(f" {key:15}| AMOUNT: {result[key]:4}\n")
@@ -361,11 +369,10 @@ def item(command):
 
 
 # displays HELP of HELP_{NAME} from hidden directory
-def help(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
-        if os.path.isfile(f"hidden_data/help_{param}.txt"):
-            read_the_file(f"hidden_data/help_{param}.txt")
+def help(params):
+    if len(params) > 1:
+        if os.path.isfile(f"hidden_data/help_{params[1].lower()}.txt"):
+            read_the_file(f"hidden_data/help_{params[1].lower()}.txt")
         else:
             output("No HELP about this command yet\n")
     else:
@@ -373,9 +380,9 @@ def help(command):
 
 
 # lets the player control some doors on the ship/station, or use some doors as puzzle
-def door(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 1)[1].lower()
+def door(params):
+    if len(params) > 1:
+        param1 = params[1].lower()
         door_list = load_csv("doors")
         if param1 == "version":
             output(" v.0.99.9\n")
@@ -386,9 +393,9 @@ def door(command):
                 if airlock[3] == "TRUE":
                     output(f" {airlock[0]:12}{airlock[1]:12}{airlock[2]:12}\n")
             output(breakline)
-        elif len(command.split(' ', 2)) > 2:
-            param1 = command.split(' ', 2)[1].lower()
-            door_name = command.split(' ', 2)[2]
+        elif len(params) > 2:
+            param1 = params[1].lower()
+            door_name = params[2]
             if param1 == "open":
                 result = f" door not found\n"
                 for airlock in door_list:
@@ -500,9 +507,9 @@ def door(command):
 
 
 # set of complex command for fast reaction
-def alarm(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+def alarm(params):
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "lockdown":
             locked_door_list = ''
             door_list = load_csv("doors")
@@ -525,14 +532,14 @@ def alarm(command):
 
 
 # allows player to switch some services DM might control
-def service(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+def service(params):
+    if len(params) > 1:
+        param1 = params[1].lower()
         service_list = load_csv("service")
         if param1 == "on" or param1 == "enable":
             result = f" Service not found\n"
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 for service_ in service_list:
                     if service_[0] == param2:
                         if service_[3] != "NONE":
@@ -558,8 +565,8 @@ def service(command):
                 output(" Please enter service name\n")
         elif param1 == "off" or param1 == "disable":
             result = f" Service not found\n"
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 for service_ in service_list:
                     if service_[0] == param2:
                         if service_[3] != "NONE":
@@ -584,8 +591,8 @@ def service(command):
             else:
                 output(" Please enter service name\n")
         elif param1 == "status":
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 result = f" Service not found\n"
                 for service_ in service_list:
                     if service_[0] == param2:
@@ -638,17 +645,17 @@ def destroy_timer():
 
 
 # allows player to "destroy" everything
-def selfdestruct(command):
+def selfdestruct(params):
     global selfdestruct_timer
     global selfdestruct_active
     global selfdestruct_password_start
     global selfdestruct_password_stop
     global selfdestruct_dead
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+    if len(params) > 1:
+        param1 = params[1].lower()
         if param1 == "timer":
-            if len(command.split(' ', 2)) > 2:
-                param2 = command.split(' ', 2)[2].lower()
+            if len(params) > 2:
+                param2 = params[2].lower()
                 if param2.isnumeric():
                     selfdestruct_timer = int(param2)
                     send_notification(f"Player set self-destruct timer at {selfdestruct_timer}")
@@ -709,9 +716,9 @@ def selfdestruct(command):
 
 
 # clears the screen of any commands
-def clear(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+def clear(params):
+    if len(params) > 1:
+        param1 = params[1].lower()
         if param1 == "version":
             output(" v1.0")
         else:
@@ -749,9 +756,10 @@ def main():
         if selfdestruct_dead:
             time.sleep(10000)
         command = input("\n \\\\Root\\ >  ")
-        first_word = command.split(' ', 1)[0].lower()
+        command_parameters = param_extractor(command)
+        first_word = command_parameters[0].lower()
         if first_word in all_command_list:
-            all_command_list[first_word](command)
+            all_command_list[first_word](command_parameters)
         else:
             output("\nCommand not found. Use HELP for HELP\n")
 
