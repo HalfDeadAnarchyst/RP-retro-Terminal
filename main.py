@@ -178,8 +178,7 @@ def get_file_type(ending):
 
 
 # function to read/list the file(s), ask for password, or play audio file
-def file(command):
-    params = param_extractor(command)
+def file(params):
     if len(params) > 1:
         param = params[1].lower()
         if param == "version":
@@ -240,8 +239,7 @@ def file(command):
 
 
 # displays all of some parts of hidden shipdiag file, used for technical roleplay
-def diag(command):
-    params = param_extractor(command)
+def diag(params):
     if len(params) > 1:
         param = params[1].lower()
         if param == "version":
@@ -287,8 +285,7 @@ def diag(command):
 
 
 # shows the player all information about normal/quest item, if player knows exact name of the item
-def ping(command):
-    params = param_extractor(command)
+def ping(params):
     if len(params) > 1:
         param = params[1].lower()
         if param == "version":
@@ -319,8 +316,7 @@ def ping(command):
 
 
 # shows summarized of types of items of the ZONE or OWNER (check CSV)
-def item(command):
-    params = param_extractor(command)
+def item(params):
     if len(params) > 1:
         param = params[1].lower()
         if param == "version":
@@ -373,8 +369,7 @@ def item(command):
 
 
 # displays HELP of HELP_{NAME} from hidden directory
-def help(command):
-    params = param_extractor(command)
+def help(params):
     if len(params) > 1:
         if os.path.isfile(f"hidden_data/help_{params[1].lower()}.txt"):
             read_the_file(f"hidden_data/help_{params[1].lower()}.txt")
@@ -385,8 +380,7 @@ def help(command):
 
 
 # lets the player control some doors on the ship/station, or use some doors as puzzle
-def door(command):
-    params = param_extractor(command)
+def door(params):
     if len(params) > 1:
         param1 = params[1].lower()
         door_list = load_csv("doors")
@@ -513,8 +507,7 @@ def door(command):
 
 
 # set of complex command for fast reaction
-def alarm(command):
-    params = param_extractor(command)
+def alarm(params):
     if len(params) > 1:
         param = params[1].lower()
         if param == "lockdown":
@@ -539,8 +532,7 @@ def alarm(command):
 
 
 # allows player to switch some services DM might control
-def service(command):
-    params = param_extractor(command)
+def service(params):
     if len(params) > 1:
         param1 = params[1].lower()
         service_list = load_csv("service")
@@ -653,13 +645,12 @@ def destroy_timer():
 
 
 # allows player to "destroy" everything
-def selfdestruct(command):
+def selfdestruct(params):
     global selfdestruct_timer
     global selfdestruct_active
     global selfdestruct_password_start
     global selfdestruct_password_stop
     global selfdestruct_dead
-    params = param_extractor(command)
     if len(params) > 1:
         param1 = params[1].lower()
         if param1 == "timer":
@@ -725,8 +716,7 @@ def selfdestruct(command):
 
 
 # clears the screen of any commands
-def clear(command):
-    params = param_extractor(command)
+def clear(params):
     if len(params) > 1:
         param1 = params[1].lower()
         if param1 == "version":
@@ -766,9 +756,10 @@ def main():
         if selfdestruct_dead:
             time.sleep(10000)
         command = input("\n \\\\Root\\ >  ")
-        first_word = param_extractor(command)[0].lower()
-        if first_word in all_command_list:
-            all_command_list[first_word](command)
+        command_parameters = param_extractor(command)
+        first_word = command_parameters[0].lower()
+        if command_parameters[0].lower in all_command_list:
+            all_command_list[first_word](command_parameters)
         else:
             output("\nCommand not found. Use HELP for HELP\n")
 
