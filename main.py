@@ -317,23 +317,24 @@ def ping(command):
 
 # shows summarized of types of items of the ZONE or OWNER (check CSV)
 def item(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 2)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.75.0")
             return
         elif param == "zone":
-            if len(command.split(' ', 2)) > 2:
+            if len(params) > 2:
                 result = {}
                 for entry in load_csv("items"):
-                    if entry[3] == command.split(' ', 2)[2].upper():
+                    if entry[3] == params[2].upper():
                         if entry[2] in result:
                             result[entry[2]] = result[entry[2]] + int(entry[7])
                         else:
                             result[entry[2]] = int(entry[7])
                 if result:
                     output(breakline)
-                    output(f" ZONE\t\t  {command.split(' ', 2)[2].upper()}\n")
+                    output(f" ZONE\t\t  {params[2].upper()}\n")
                     output(breakline)
                     for key in result:
                         output(f" {key:15}| AMOUNT: {result[key]:4}\n")
@@ -343,17 +344,17 @@ def item(command):
             else:
                 output("Enter name of the ZONE, use HELP ITEM for detailed info\n")
         elif param == "owner":
-            if len(command.split(' ', 2)) > 2:
+            if len(params) > 2:
                 result = {}
                 for entry in load_csv("items"):
-                    if entry[5] == command.split(' ', 2)[2].upper():
+                    if entry[5] == params[2].upper():
                         if entry[2] in result:
                             result[entry[2]] = result[entry[2]] + int(entry[7])
                         else:
                             result[entry[2]] = int(entry[7])
                 if result:
                     output(breakline)
-                    output(f" OWNER\t\t  {command.split(' ', 2)[2].upper()}\n")
+                    output(f" OWNER\t\t  {params[2].upper()}\n")
                     output(breakline)
                     for key in result:
                         output(f" {key:15}| AMOUNT: {result[key]:4}\n")
