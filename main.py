@@ -240,8 +240,9 @@ def file(command):
 
 # displays all of some parts of hidden shipdiag file, used for technical roleplay
 def diag(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.17.2\n")
             return
