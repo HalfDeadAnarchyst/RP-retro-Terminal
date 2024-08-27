@@ -384,8 +384,9 @@ def help(command):
 
 # lets the player control some doors on the ship/station, or use some doors as puzzle
 def door(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 1)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param1 = params[1].lower()
         door_list = load_csv("doors")
         if param1 == "version":
             output(" v.0.99.9\n")
@@ -396,9 +397,9 @@ def door(command):
                 if airlock[3] == "TRUE":
                     output(f" {airlock[0]:12}{airlock[1]:12}{airlock[2]:12}\n")
             output(breakline)
-        elif len(command.split(' ', 2)) > 2:
-            param1 = command.split(' ', 2)[1].lower()
-            door_name = command.split(' ', 2)[2]
+        elif len(params) > 2:
+            param1 = params[1].lower()
+            door_name = params[2]
             if param1 == "open":
                 result = f" door not found\n"
                 for airlock in door_list:
