@@ -287,8 +287,8 @@ def diag(command):
 # shows the player all information about normal/quest item, if player knows exact name of the item
 def ping(command):
     params = param_extractor(command)
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.75.0\n")
             return
@@ -298,7 +298,7 @@ def ping(command):
             for entry in load_csv("items"):
                 if entry[0].upper() == "NAME":
                     naming = entry
-                if entry[0] == command.split(' ', 1)[1].upper():
+                if entry[0] == params[1].upper():
                     item_line.append(entry)
             if len(item_line) > 1:
                 output("Multiple ping detected, triangulation aborted\n")
