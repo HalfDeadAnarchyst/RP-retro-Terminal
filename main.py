@@ -654,11 +654,12 @@ def selfdestruct(command):
     global selfdestruct_password_start
     global selfdestruct_password_stop
     global selfdestruct_dead
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param1 = params[1].lower()
         if param1 == "timer":
-            if len(command.split(' ', 2)) > 2:
-                param2 = command.split(' ', 2)[2].lower()
+            if len(params) > 2:
+                param2 = params[2].lower()
                 if param2.isnumeric():
                     selfdestruct_timer = int(param2)
                     send_notification(f"Player set self-destruct timer at {selfdestruct_timer}")
