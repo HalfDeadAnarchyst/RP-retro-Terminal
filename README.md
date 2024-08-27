@@ -747,6 +747,10 @@ Ways you can contact me:
 
 [miri-solari](https://github.com/Miri-Solari) for help with DIAG part and other minor tasks
 
+[NikBel523](https://github.com/NikBel523) for improving the code
+
+[Stavinsky](https://github.com/stavinsky) for QA and code review
+
 Special thanks for my crew of space sailors for testing this Terminal out
 
 # License
