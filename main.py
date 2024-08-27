@@ -49,6 +49,14 @@ breakline = "- - - - - - - - - - - - - - - - - - - - - - -\n"
 
 
 # Functions section
+def param_extractor(command):
+    """Splits the command into parameters."""
+    params = command.split(" ")
+    if params[-1] == "":
+        params.pop()
+    return params
+
+
 # slow typer for all prints, fancy output. Global variables for this at the top
 def output(text):
     for line in text:
