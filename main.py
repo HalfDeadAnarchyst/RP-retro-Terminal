@@ -370,10 +370,10 @@ def item(command):
 
 # displays HELP of HELP_{NAME} from hidden directory
 def help(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
-        if os.path.isfile(f"hidden_data/help_{param}.txt"):
-            read_the_file(f"hidden_data/help_{param}.txt")
+    params = param_extractor(command)
+    if len(params) > 1:
+        if os.path.isfile(f"hidden_data/help_{params[1].lower()}.txt"):
+            read_the_file(f"hidden_data/help_{params[1].lower()}.txt")
         else:
             output("No HELP about this command yet\n")
     else:
