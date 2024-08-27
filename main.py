@@ -757,7 +757,7 @@ def main():
         if selfdestruct_dead:
             time.sleep(10000)
         command = input("\n \\\\Root\\ >  ")
-        first_word = command.split(' ', 1)[0].lower()
+        first_word = param_extractor(command)[0].lower()
         if first_word in all_command_list:
             all_command_list[first_word](command)
         else:
