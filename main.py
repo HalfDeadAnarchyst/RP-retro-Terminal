@@ -286,6 +286,7 @@ def diag(command):
 
 # shows the player all information about normal/quest item, if player knows exact name of the item
 def ping(command):
+    params = param_extractor(command)
     if len(command.split(' ', 1)) > 1:
         param = command.split(' ', 1)[1].lower()
         if param == "version":
@@ -719,8 +720,9 @@ def selfdestruct(command):
 
 # clears the screen of any commands
 def clear(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param1 = params[1].lower()
         if param1 == "version":
             output(" v1.0")
         else:
