@@ -179,8 +179,9 @@ def get_file_type(ending):
 
 # function to read/list the file(s), ask for password, or play audio file
 def file(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "version":
             output("V 0.2.5\n")
             return
@@ -198,7 +199,7 @@ def file(command):
             output(breakline)
         else:
             # param is name of file
-            param = command.split(' ', 1)[1]
+            param = params[1]
             # gets list of files and appends them into the list
             file_ = [filename for filename in os.listdir("open_data") if filename.startswith(param)]
             if len(file_) > 1:
