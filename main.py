@@ -540,13 +540,14 @@ def alarm(command):
 
 # allows player to switch some services DM might control
 def service(command):
-    if len(command.split(' ', 1)) > 1:
-        param1 = command.split(' ', 2)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param1 = params[1].lower()
         service_list = load_csv("service")
         if param1 == "on" or param1 == "enable":
             result = f" Service not found\n"
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 for service_ in service_list:
                     if service_[0] == param2:
                         if service_[3] != "NONE":
@@ -572,8 +573,8 @@ def service(command):
                 output(" Please enter service name\n")
         elif param1 == "off" or param1 == "disable":
             result = f" Service not found\n"
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 for service_ in service_list:
                     if service_[0] == param2:
                         if service_[3] != "NONE":
@@ -598,8 +599,8 @@ def service(command):
             else:
                 output(" Please enter service name\n")
         elif param1 == "status":
-            param2 = command.split(' ', 2)[2]
-            if param2 != "":
+            if len(params) > 2:
+                param2 = " ".join(params[2:])
                 result = f" Service not found\n"
                 for service_ in service_list:
                     if service_[0] == param2:
