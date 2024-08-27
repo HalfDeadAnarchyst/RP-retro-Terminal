@@ -511,8 +511,9 @@ def door(command):
 
 # set of complex command for fast reaction
 def alarm(command):
-    if len(command.split(' ', 1)) > 1:
-        param = command.split(' ', 1)[1].lower()
+    params = param_extractor(command)
+    if len(params) > 1:
+        param = params[1].lower()
         if param == "lockdown":
             locked_door_list = ''
             door_list = load_csv("doors")
