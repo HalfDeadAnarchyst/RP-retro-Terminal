@@ -69,10 +69,12 @@ def service(params):
                 result = f" Service not found\n"
                 for service_ in service_list:
                     if service_[0] == param2:
-                        result = f"{BREAKLINE}" \
-                                 f"{service_list[0][0]:20}|{service_list[0][1]:6}|{service_list[0][2]}\n" \
-                                 f"{service_[0]:20}|{service_[1]:6}|{service_[2]}\n" \
-                                 f"{BREAKLINE}"
+                        result = (
+                            f"{BREAKLINE}"
+                            f"{service_list[0][0]:20}|{service_list[0][1]:6}|{service_list[0][2]}\n"
+                            f"{service_[0]:20}|{service_[1]:6}|{service_[2]}\n"
+                            f"{BREAKLINE}"
+                        )
                 output(result)
             else:
                 output(" Please enter service name\n")

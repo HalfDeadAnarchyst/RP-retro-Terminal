@@ -111,11 +111,13 @@ def door(params):
                             password = "NONE"
                         else:
                             password = "PROTECTED"
-                        result = f" {door_list[0][0]:20}{airlock[0]:12}\n" \
-                                 f" {door_list[0][1]:20}{airlock[1]:12}\n" \
-                                 f" {door_list[0][2]:20}{airlock[2]:12}\n" \
-                                 f" {door_list[0][4]:20}{password:12}\n" \
-                                 f" {door_list[0][5]:20}{airlock[5]:12}\n"
+                        result = (
+                            f" {door_list[0][0]:20}{airlock[0]:12}\n"
+                            f" {door_list[0][1]:20}{airlock[1]:12}\n"
+                            f" {door_list[0][2]:20}{airlock[2]:12}\n"
+                            f" {door_list[0][4]:20}{password:12}\n"
+                            f" {door_list[0][5]:20}{airlock[5]:12}\n"
+                        )
                         send_notification(f" Player checked status \n{result}")
                 if result:
                     output(BREAKLINE)
