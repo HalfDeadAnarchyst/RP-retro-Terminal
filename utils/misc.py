@@ -11,10 +11,12 @@ from settings import SLOW_LINE_SLEEP, SLOW_TYPE_SPEED, ENABLE_TYPEWRITER
 
 def param_extractor(command):
     """Splits the command into parameters."""
-    params = command.split(" ")
-    if params[-1] == "":
-        params.pop()
-    return params
+    if command:
+        params = command.split(" ")
+        if params[-1] == "":
+            params.pop()
+        return params
+    return "Not a command"
 
 
 def output(text):
