@@ -757,9 +757,12 @@ def main():
             time.sleep(10000)
         command = input("\n \\\\Root\\ >  ")
         command_parameters = param_extractor(command)
-        first_word = command_parameters[0].lower()
-        if first_word in all_command_list:
-            all_command_list[first_word](command_parameters)
+        if len(command_parameters) != 0:
+            first_word = command_parameters[0].lower()
+            if first_word in all_command_list:
+                all_command_list[first_word](command_parameters)
+            else:
+                output("\nCommand not found. Use HELP for HELP\n")
         else:
             output("\nCommand not found. Use HELP for HELP\n")
 
